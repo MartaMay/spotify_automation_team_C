@@ -28,7 +28,7 @@ public class Driver {
                 case "chrome-headless" -> driver = new ChromeDriver(new ChromeOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
                 case "firefox-headless" -> driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
                 case "edge-headless" -> driver = new EdgeDriver(new EdgeOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
-                default -> throw new IllegalArgumentException("Invalid driver.");
+                default -> throw new IllegalArgumentException("Invalid browser.");
             }
         }
 
