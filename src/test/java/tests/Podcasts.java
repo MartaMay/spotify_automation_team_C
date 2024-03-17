@@ -37,6 +37,6 @@ public class Podcasts extends TestBase{
         Driver.getDriver().findElement(By.xpath("//div[@class='CardButton-sc-g9vf2u-0 doNNoL']")).click();
         Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//span[text()='Business']")).isDisplayed());
 
-
     }
+
 }
