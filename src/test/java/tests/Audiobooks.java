@@ -17,7 +17,7 @@ public class Audiobooks extends TestBase{
 
 
     @Test
-    public void podcastCategories() throws InterruptedException {
+    public void audiobooks() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();
