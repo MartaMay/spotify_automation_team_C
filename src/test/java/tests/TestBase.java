@@ -22,6 +22,6 @@ public class TestBase {
     @AfterMethod (alwaysRun = true)
     public void tearDown(){
 
-      Driver.quitDriver();
+      //Driver.quitDriver();
     }
 }
