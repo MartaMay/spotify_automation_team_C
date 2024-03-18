@@ -17,4 +17,7 @@ public class PlaylistPage {
     public WebElement getPlaylist(){ return playlist; }
 
     public void clickPlaylist(){ playlist.click();}
+
+
+
 }
