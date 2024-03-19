@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,6 +11,7 @@ import pages.PodcastsPage;
 import pages.SearchPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.SeleniumUtils;
 
 import java.util.List;
 
@@ -25,6 +27,12 @@ public class Podcasts extends TestBase{
 
         new SearchPage().clickSearch();
 
+        try {
+            SeleniumUtils.waitForVisibility(Driver.getDriver().findElement(By.xpath("//div[@class='Popover__StyledPopover-sc-1iog353-0 hUICWc encore-announcement-set cKHK53VIATgkMZYQDfol']")), 5);
+            Driver.getDriver().findElement(By.cssSelector("button[class='Button-sc-1dqy6lx-0 emaScS QMGfkFWtxrVkgNgFXDyw']")).click();
+
+        }catch (NoSuchElementException ignored){
+        }
 
         new PodcastsPage().clickPodcasts();
 

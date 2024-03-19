@@ -9,7 +9,7 @@ import utilities.Driver;
 
 public class Playlist extends TestBase{
 
-    @Test
+    @Test (groups = "smoke")
     public void creatingPlaylist() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));
