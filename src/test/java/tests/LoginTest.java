@@ -58,7 +58,8 @@ public class LoginTest extends TestBase {
         new LoginPage().login();
         new LoginPage().getUserNameField().sendKeys("", Keys.TAB, "", Keys.ENTER);
 
-    }@Test
+    }
+    @Test
     public void testRememberMeCheckbox(){
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();

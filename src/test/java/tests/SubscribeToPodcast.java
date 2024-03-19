@@ -19,7 +19,7 @@ import java.util.Random;
 public class SubscribeToPodcast extends TestBase {
 
 
-    @Test (groups = "smoke")
+    @Test
     public void subscribeToPodcast() throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();
@@ -32,6 +32,7 @@ public class SubscribeToPodcast extends TestBase {
         Driver.getDriver().findElement(By.linkText("See all categories")).click();
         Driver.getDriver().findElement(By.xpath("//span[text()='Film']")).click();
 
+        Thread.sleep(1000);
         Driver.getDriver().findElement(By.xpath("//div[@class='Box__BoxComponent-sc-y4nds-0 fqjnfn Box-sc-1njtxi4-0 hscyXl aAYpzGljXQv1_zfopxaH XiVwj5uoqqSFpS4cYOC6']")).click();
 
         Thread.sleep(1000);
