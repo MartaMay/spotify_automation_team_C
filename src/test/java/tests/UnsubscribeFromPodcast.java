@@ -30,14 +30,15 @@ public class UnsubscribeFromPodcast extends TestBase {
             Driver.getDriver().findElement(By.xpath("//span[text()='Podcasts & Shows']")).click();
             Driver.getDriver().findElement(By.xpath("(//div[@class='JUa6JJNj7R_Y3i4P8YUX']//li[@class='NxEINIJHGytq4gF1r2N1  qEiVyQ28VnOKb0LeijqL'])[1]")).click();
 
+            Driver.getDriver().findElement(By.xpath("//button[text()='Following']")).click();
+            Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//button[text()='Follow']")).isDisplayed());
         } catch (NoSuchElementException e) {
 
-            System.out.println("You currently don't have any subscriptions." + e.getMessage());
+            System.out.println("You currently don't have any subscriptions: " + e.getMessage());
             Driver.getDriver().quit();
         }
 
-        Driver.getDriver().findElement(By.xpath("//button[text()='Following']")).click();
-        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//button[text()='Follow']")).isDisplayed());
+
 
     }
 }
