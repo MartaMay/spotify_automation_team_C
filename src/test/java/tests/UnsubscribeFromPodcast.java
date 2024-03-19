@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PodcastsPage;
+import pages.PopUpWindow;
 import pages.SearchPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -21,11 +22,7 @@ public class UnsubscribeFromPodcast extends TestBase {
         new LoginPage().login();
 
         new SearchPage().clickSearch();
-
-        try {
-            SeleniumUtils.waitForVisibility(Driver.getDriver().findElement(By.xpath("//div[@class='Popover__StyledPopover-sc-1iog353-0 hUICWc encore-announcement-set cKHK53VIATgkMZYQDfol']")), 5);
-            Driver.getDriver().findElement(By.cssSelector("button[class='Button-sc-1dqy6lx-0 emaScS QMGfkFWtxrVkgNgFXDyw']")).click();
-        } catch (NoSuchElementException ignored) {     }
+        new PopUpWindow().closePopUp();
 
         Driver.getDriver().findElement(By.xpath("//div[@id='Desktop_LeftSidebar_Id']//div[@class='EZFyDnuQnx5hw78phLqP hjb8tUL3rpUa0ez4ZtAj']//header[@class='UvXqRORKQr_N3jlgGTcS']")).click();
 
@@ -40,8 +37,6 @@ public class UnsubscribeFromPodcast extends TestBase {
         }
 
         Driver.getDriver().findElement(By.xpath("//button[text()='Following']")).click();
-
-
         Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//button[text()='Follow']")).isDisplayed());
 
     }
