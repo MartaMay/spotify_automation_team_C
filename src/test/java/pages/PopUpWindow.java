@@ -11,6 +11,7 @@ import utilities.SeleniumUtils;
 
 @Data
 public class PopUpWindow {
+
     public PopUpWindow(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -24,10 +25,13 @@ public class PopUpWindow {
 
     public void closePopUp(){
         try {
+            Driver.getDriver().navigate().refresh();
             SeleniumUtils.waitForVisibility(Driver.getDriver().findElement(By.xpath("//div[@class='Popover__StyledPopover-sc-1iog353-0 hUICWc encore-announcement-set cKHK53VIATgkMZYQDfol']")), 5);
             Driver.getDriver().findElement(By.cssSelector("button[class='Button-sc-1dqy6lx-0 emaScS QMGfkFWtxrVkgNgFXDyw']")).click();
 
         }catch (NoSuchElementException ignored){
         }
+
+
     }
 }

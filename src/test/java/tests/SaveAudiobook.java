@@ -31,7 +31,7 @@ public class SaveAudiobook extends TestBase{
         Driver.getDriver().findElement(By.xpath("//div[@class='CardButton-sc-g9vf2u-0 doNNoL']")).click();
         Driver.getDriver().findElement(By.xpath("(//button[@class='Button-sc-1dqy6lx-0 dAlRsJ'])[1]")).click();
 
-        String actualTitle = Driver.getDriver().findElement(By.xpath("//h1[text()='Still See You Everywhere']")).getText();
+        String actualTitle = Driver.getDriver().findElement(By.xpath("//h1[text()]")).getText();
 
         Driver.getDriver().findElement(By.xpath("//div[@id='Desktop_LeftSidebar_Id']//div[@class='EZFyDnuQnx5hw78phLqP hjb8tUL3rpUa0ez4ZtAj']//header[@class='UvXqRORKQr_N3jlgGTcS']")).click();
         Driver.getDriver().findElement(By.xpath("//span[text()='Audiobooks']")).click();

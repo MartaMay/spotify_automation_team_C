@@ -1,6 +1,7 @@
 package pages;
 
 import lombok.Data;
+import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,19 +16,15 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    @Getter
     @FindBy (css = "button[data-testid='login-button']")
     private  WebElement loginButton;
+    @Getter
     @FindBy (id = "login-username")
     private  WebElement userNameField;
 
     @FindBy (id="login-remember")
     private WebElement rememberMeCheckbox;
-
-    public WebElement getUserNameField() {
-        return userNameField;
-    }
-
-    public WebElement getLoginButton() { return  loginButton; }
 
     public WebElement clickRememberMeCheckbox(){
         return rememberMeCheckbox;
