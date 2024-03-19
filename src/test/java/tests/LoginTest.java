@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class LoginTest extends TestBase {
 
-    @Test
+    @Test (groups = "smoke")
     public void testValidCredentials() throws IOException {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();
@@ -51,7 +51,7 @@ public class LoginTest extends TestBase {
         new LoginPage().getUserNameField().sendKeys("hoho", Keys.TAB, "", Keys.ENTER);
 
     }
-    @Test
+    @Test (groups = "smoke")
     public void testInvalidCredentialsNoCred(){
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();

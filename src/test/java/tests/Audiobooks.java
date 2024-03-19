@@ -4,10 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AudiobooksPage;
-import pages.LoginPage;
-import pages.PodcastsPage;
-import pages.SearchPage;
+import pages.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 
@@ -22,9 +19,8 @@ public class Audiobooks extends TestBase{
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();
         new LoginPage().login();
-
+        new PopUpWindow().closePopUp();
         new SearchPage().clickSearch();
-
         new AudiobooksPage().clickAudiobooks();
 
         Driver.getDriver().findElement(By.linkText("Explore all genres")).click();
