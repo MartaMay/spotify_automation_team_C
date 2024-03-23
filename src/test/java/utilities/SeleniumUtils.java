@@ -18,6 +18,16 @@ import java.util.function.Function;
 
 public class SeleniumUtils {
 
+
+    public static void switchToWindow(){
+        ArrayList<String> tabs = new ArrayList<>(Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+    }
+    public static void switchToOriginal(){
+        Driver.getDriver().close();
+        Driver.getDriver().switchTo().window(new ArrayList<>(Driver.getDriver().getWindowHandles()).get(0));
+    }
+
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {

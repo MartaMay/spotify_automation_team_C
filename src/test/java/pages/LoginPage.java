@@ -31,7 +31,7 @@ public class LoginPage {
     }
 
     public void login(String username, String password){
-        userNameField.sendKeys(ConfigReader.getProperty(username), Keys.TAB, ConfigReader.getProperty(password), Keys.ENTER);
+        userNameField.sendKeys(username, Keys.TAB, password, Keys.ENTER);
 
     }
     public void login(){

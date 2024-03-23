@@ -22,6 +22,7 @@ public class Audiobooks extends TestBase{
         new LoginPage().getLoginButton().click();
         new LoginPage().login();
         new SearchPage().clickSearch();
+        Thread.sleep(1000);
         new PopUpWindow().closePopUp();
         new AudiobooksPage().clickAudiobooks();
 

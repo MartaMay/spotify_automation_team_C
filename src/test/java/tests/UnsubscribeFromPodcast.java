@@ -22,6 +22,8 @@ public class UnsubscribeFromPodcast extends TestBase {
         new LoginPage().login();
 
         new SearchPage().clickSearch();
+        Driver.getDriver().navigate().refresh();
+        Thread.sleep(1000);
         new PopUpWindow().closePopUp();
 
         Driver.getDriver().findElement(By.xpath("//div[@id='Desktop_LeftSidebar_Id']//div[@class='EZFyDnuQnx5hw78phLqP hjb8tUL3rpUa0ez4ZtAj']//header[@class='UvXqRORKQr_N3jlgGTcS']")).click();
