@@ -26,7 +26,9 @@ public class Podcasts extends TestBase{
         new LoginPage().getLoginButton().click();
         new LoginPage().login();
         new SearchPage().clickSearch();
-        new PopUpWindow().closePopUp();
+        Driver.getDriver().navigate().refresh();
+        Thread.sleep(1000);
+       // new PopUpWindow().closePopUp();
         new PodcastsPage().clickPodcasts();
 
         Driver.getDriver().findElement(By.linkText("See all categories")).click();

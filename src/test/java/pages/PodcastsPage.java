@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
+import utilities.SeleniumUtils;
 
 
 @Data
@@ -19,5 +20,6 @@ public class PodcastsPage {
 
     public WebElement getPodcasts(){ return podcasts; }
 
-    public void clickPodcasts(){ podcasts.click();}
+    public void clickPodcasts(){
+        SeleniumUtils.jsClick(podcasts);}
 }

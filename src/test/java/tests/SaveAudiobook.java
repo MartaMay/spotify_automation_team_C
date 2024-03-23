@@ -27,6 +27,7 @@ public class SaveAudiobook extends TestBase{
         new SearchPage().clickSearch();
         new AudiobooksPage().clickAudiobooks();
         Driver.getDriver().navigate().refresh();
+        Thread.sleep(1000);
         new PopUpWindow().closePopUp();
 
         Driver.getDriver().findElement(By.xpath("//div[@class='CardButton-sc-g9vf2u-0 doNNoL']")).click();
