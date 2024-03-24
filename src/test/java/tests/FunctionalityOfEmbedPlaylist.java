@@ -7,9 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import pages.PodcastsPage;
-import pages.SearchPage;
+import pages.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.SeleniumUtils;
@@ -50,6 +48,10 @@ public class FunctionalityOfEmbedPlaylist extends TestBase{
         //take a screenshot
 
         SeleniumUtils.takeAScreenshot("src/test/java/tests/embedshow.png");
+
+        new ProfilePage().clickProfile();
+        new LogOut().clickLogOut();
+
 
 
 
