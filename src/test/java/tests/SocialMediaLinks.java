@@ -23,7 +23,9 @@ public class SocialMediaLinks extends TestBase {
         System.out.println(Driver.getDriver().getTitle());
 //scroll down to social media. open instagram
         Thread.sleep(1000);
-        SeleniumUtils.scrollToElement(Driver.getDriver().findElement(By.xpath("//a[@title='Instagram']")));
+       // SeleniumUtils.scrollToElement(Driver.getDriver().findElement(By.xpath("//a[@title='Instagram']")));
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         Driver.getDriver().findElement(By.xpath("//a[@title='Instagram']")).click();
 
         SeleniumUtils.switchToWindow();

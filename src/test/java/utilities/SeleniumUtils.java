@@ -172,4 +172,13 @@ public class SeleniumUtils {
         JavascriptExecutor js=  (JavascriptExecutor)Driver.getDriver();
         js.executeScript("window.scrollBy("+x+","+y+");");
     }
+
+    public static void takeAScreenshot(String pathName){
+        File screenShot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenShot, new File(pathName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
