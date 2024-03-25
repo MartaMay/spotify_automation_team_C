@@ -20,39 +20,34 @@ public class FunctionalityOfEmbedPlaylist extends TestBase{
     @Test
     public void embedPlaylist() throws IOException {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+
+        logger.info("Log in to Spotify");
         new LoginPage().getLoginButton().click();
-        new LoginPage().login("testuser1@example.com", "\"oB1/@kkPD\"");
+        new LoginPage().login();
         new SearchPage().clickSearch();
-        //navigate to Podcasts
+
+        logger.info("Navigate to Podcasts");
         SeleniumUtils.jsClick(new PodcastsPage().getPodcasts());
         Driver.getDriver().findElement(By.xpath("//div[@class='CardButton-sc-g9vf2u-0 doNNoL']")).click();
         Driver.getDriver().findElement(By.xpath("//div[@class='eSg4ntPU2KQLfpLGXAww']//button[@class='Button-sc-1dqy6lx-0 dAlRsJ']")).click();
         Driver.getDriver().findElement(By.xpath("//span[text()='Share']")).click();
-        //locate embed playlist
-        Driver.getDriver().findElement(By.xpath("//span[text()='Embed show']")).click();
 
+        logger.info("Locate embed option");
+        Driver.getDriver().findElement(By.xpath("//span[text()='Embed show']")).click();
         Assert.assertEquals(Driver.getDriver().findElement(By.xpath("//h1[text()='Embed show']")).getText(), "Embed show");
 
-        //change size of the playlist
+        logger.info("Change “Embed Show” window size");
         new Select(Driver.getDriver().findElement(By.cssSelector("#ewg-height"))).selectByIndex(1);
 
-        //change color
+        logger.info("Change “Embed Show” window color");
         Driver.getDriver().findElement(By.cssSelector("button[class='mBGUavHPMlD5mfAmiy5g']")).click();
 
-        //show the code of iframe
+        logger.info("Verify that the “Embed Show” code is displayed");
         Driver.getDriver().findElement(By.xpath("//label[text()='Show code']")).click();
-        //confirm that the code is displayed
-
         Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//pre[contains(text(),'iframe')]")).isDisplayed());
 
-        //take a screenshot
-
+        logger.info("Take a screenshot");
         SeleniumUtils.takeAScreenshot("src/test/java/tests/embedshow.png");
-
-        new ProfilePage().clickProfile();
-        new LogOut().clickLogOut();
-
-
 
 
     }

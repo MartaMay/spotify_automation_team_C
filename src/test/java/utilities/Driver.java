@@ -20,6 +20,8 @@ public class Driver {
         if(driver == null){
 
             String browserType = ConfigReader.getProperty("browser").toLowerCase();
+
+
             switch (browserType){
                 case "chrome" -> driver = new ChromeDriver();
                 case "firefox" -> driver = new FirefoxDriver();

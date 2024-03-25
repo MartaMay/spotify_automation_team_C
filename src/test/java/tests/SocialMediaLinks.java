@@ -18,41 +18,43 @@ public class SocialMediaLinks extends TestBase {
     public void socialMediaLinks() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+
+        logger.info("Log in and navigate to the homepage");
         new LoginPage().getLoginButton().click();
         new LoginPage().login("testuser1@example.com", "\"oB1/@kkPD\"");
-        System.out.println(Driver.getDriver().getTitle());
-//scroll down to social media. open instagram
+
+        logger.info("Scroll down using the keyboard");
         Thread.sleep(1000);
-       // SeleniumUtils.scrollToElement(Driver.getDriver().findElement(By.xpath("//a[@title='Instagram']")));
-        Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        new Actions(Driver.getDriver()).sendKeys(Keys.PAGE_DOWN).perform();
+
+        logger.info("Locate Instagram link");
         Driver.getDriver().findElement(By.xpath("//a[@title='Instagram']")).click();
 
+        logger.info("Verify that Spotify’s official Instagram page is displayed");
         SeleniumUtils.switchToWindow();
-        String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(actualUrl, "https://www.instagram.com/spotify/");
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify (@spotify) • Instagram photos and videos");
+        SeleniumUtils.switchToOriginal();
 
-       SeleniumUtils.switchToOriginal();
-// open facebook
+        logger.info("Locate Facebook link");
         Driver.getDriver().findElement(By.xpath("//a[@title='Facebook']")).click();
         SeleniumUtils.switchToWindow();
-        System.out.println(Driver.getDriver().getTitle());
-        Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://www.facebook.com/Spotify");
 
-        SeleniumUtils.switchToOriginal();
+        logger.info("Verify that Spotify’s official Facebook page is displayed");
         Thread.sleep(1000);
-    // open twitter
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify | Facebook");
+        SeleniumUtils.switchToOriginal();
+
+        logger.info("Locate Twitter link");
         Driver.getDriver().findElement(By.xpath("//a[@title='Twitter']")).click();
         SeleniumUtils.switchToWindow();
-        System.out.println(Driver.getDriver().getTitle());
-        Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://twitter.com/spotify");
 
+        logger.info("Verify that Spotify’s official Twitter page is displayed");
+        Thread.sleep(1000);
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify (@Spotify) / X");
         SeleniumUtils.switchToOriginal();
 
-
-
-
-
+        logger.info("Navigate back to the homepage");
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify - Web Player: Music for everyone");
 
     }
 }

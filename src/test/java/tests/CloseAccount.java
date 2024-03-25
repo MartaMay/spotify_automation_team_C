@@ -18,13 +18,16 @@ public class CloseAccount extends TestBase{
     public void changeLanguage() {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+
+        logger.info("Log in to Spotify");
         new LoginPage().getLoginButton().click();
-        //login
         new LoginPage().login("testuser1@example.com", "\"oB1/@kkPD\"");
 
+        logger.info("Navigate to Account Settings");
         new ProfilePage().clickProfile();
         new AccountPage().clickAccount();
 
+        logger.info("Click on close account option and provide confirmation");
         SeleniumUtils.switchToWindow();
         new Actions(Driver.getDriver()).moveToElement(Driver.getDriver().findElement(By.xpath("//a[@data-testid='menu-item-closeAccount']"))).sendKeys(Keys.PAGE_DOWN).perform();
         Driver.getDriver().findElement(By.xpath("//a[@data-testid='menu-item-closeAccount']")).click();
@@ -32,9 +35,8 @@ public class CloseAccount extends TestBase{
         Driver.getDriver().findElement(By.xpath("//span[@class='Indicator-sc-1airx73-0 klYYtn']")).click();
         Driver.getDriver().findElement(By.xpath("//span[text()='Continue to close your account']")).click();
 
+        logger.info("Account Closure Confirmation");
         Assert.assertTrue(Driver.getDriver().findElement(By.xpath("//span[text()='Close your account']")).isDisplayed());
-
-
 
     }
 }
