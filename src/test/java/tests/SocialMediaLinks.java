@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class SocialMediaLinks extends TestBase {
 
-    @Test
+    @Test (groups = "smoke")
     public void socialMediaLinks() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SaveAudiobook extends TestBase{
 
-    @Test(groups = "smoke")
+    @Test
     public void saveAudiobook() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));

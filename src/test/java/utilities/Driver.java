@@ -11,37 +11,42 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class Driver {
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     private Driver(){}
 
-    public static WebDriver getDriver(){
+    public static synchronized WebDriver getDriver(){
 
-        if(driver == null){
+        if(drivers.get() == null){
 
-            String browserType = ConfigReader.getProperty("browser").toLowerCase();
+            String browserType = System.getProperty("browser"); // read the command line browser type
+
+            if(browserType == null){ // if no browser is passed in command line
+                browserType = ConfigReader.getProperty("browser").toLowerCase(); // use the one in config properties
+            }
+
 
 
             switch (browserType){
-                case "chrome" -> driver = new ChromeDriver();
-                case "firefox" -> driver = new FirefoxDriver();
-                case "edge" -> driver = new EdgeDriver();
-                case "safari" -> driver = new SafariDriver();
-                case "chrome-headless" -> driver = new ChromeDriver(new ChromeOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
-                case "firefox-headless" -> driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
-                case "edge-headless" -> driver = new EdgeDriver(new EdgeOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
+                case "chrome" -> drivers.set(new ChromeDriver());
+                case "firefox" -> drivers.set(new FirefoxDriver());
+                case "edge" -> drivers.set(new EdgeDriver());
+                case "safari" -> drivers.set(new SafariDriver());
+                case "chrome-headless" -> drivers.set(new ChromeDriver(new ChromeOptions().addArguments("--headless").addArguments("window-size=1920x1080")));
+                case "firefox-headless" -> drivers.set(new FirefoxDriver(new FirefoxOptions().addArguments("--headless").addArguments("window-size=1920x1080")));
+                case "edge-headless" -> drivers.set(new EdgeDriver(new EdgeOptions().addArguments("--headless").addArguments("window-size=1920x1080")));
                 default -> throw new IllegalArgumentException("Invalid browser.");
             }
         }
 
-        return driver;
+        return drivers.get();
     }
 
     public static void quitDriver(){
 
-        if(driver != null){
-            driver.quit();
-            driver = null;
+        if(drivers.get() != null){
+            drivers.get().quit();
+            drivers.remove();
         }
     }
 }
