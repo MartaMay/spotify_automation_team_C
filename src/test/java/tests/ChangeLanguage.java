@@ -8,6 +8,7 @@ import pages.LoginPage;
 import pages.ProfilePage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.SeleniumUtils;
 
 public class ChangeLanguage extends TestBase{
 
@@ -18,7 +19,7 @@ public class ChangeLanguage extends TestBase{
 
         logger.info("Log in to Spotify");
         new LoginPage().getLoginButton().click();
-        new LoginPage().login("testuser1@example.com", "\"oB1/@kkPD\"");
+        new LoginPage().login();
 
         logger.info("Navigate to settings");
         new ProfilePage().clickProfile();
@@ -28,7 +29,7 @@ public class ChangeLanguage extends TestBase{
         new Select(Driver.getDriver().findElement(By.cssSelector(".zrvvPyoxE6wQNqnu0yWA"))).selectByVisibleText("Українська (Ukrainian)");
 
         logger.info("Apply language changes");
-        Driver.getDriver().findElement(By.xpath("//button[text()='Reload']")).click();
+        SeleniumUtils.jsClick(Driver.getDriver().findElement(By.xpath("//button[text()='Reload']")));
 
         logger.info("Assert that the displayed text matches the expected text in the new language");
         Assert.assertEquals(Driver.getDriver().findElement(By.xpath("//h1[text()='Налаштування']")).getText(), "Налаштування");

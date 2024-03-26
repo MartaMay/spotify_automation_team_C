@@ -19,10 +19,10 @@ public class Driver {
 
         if(drivers.get() == null){
 
-            String browserType = System.getProperty("browser"); // read the command line browser type
+            String browserType = System.getProperty("browser");
 
-            if(browserType == null){ // if no browser is passed in command line
-                browserType = ConfigReader.getProperty("browser").toLowerCase(); // use the one in config properties
+            if(browserType == null){
+                browserType = ConfigReader.getProperty("browser").toLowerCase();
             }
 
 
@@ -50,3 +50,5 @@ public class Driver {
         }
     }
 }
+
+// mvn test -D xmlFile=smoke-test-suite.xml -D browser=chrome-headless
