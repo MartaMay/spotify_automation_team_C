@@ -15,7 +15,7 @@ import utilities.SeleniumUtils;
 public class UnsubscribeFromPodcast extends TestBase {
 
 
-    @Test (groups = "smoke")
+    @Test
     public void unsubscribeFromPodcast() throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         new LoginPage().getLoginButton().click();

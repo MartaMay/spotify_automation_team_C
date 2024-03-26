@@ -11,7 +11,7 @@ import utilities.Driver;
 
 public class ChangeLanguage extends TestBase{
 
-    @Test
+    @Test (groups = "smoke")
     public void changeLanguage(){
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));

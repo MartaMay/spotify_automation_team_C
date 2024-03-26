@@ -19,7 +19,7 @@ import java.util.List;
 public class Podcasts extends TestBase{
 
 
-    @Test (groups = "smoke")
+    @Test
     public void podcastCategories() throws InterruptedException {
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));
