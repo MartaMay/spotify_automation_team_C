@@ -32,6 +32,7 @@ public class SocialMediaLinks extends TestBase {
 
         logger.info("Verify that Spotify’s official Instagram page is displayed");
         SeleniumUtils.switchToWindow();
+        Thread.sleep(2000);
         Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify (@spotify) • Instagram photos and videos");
         SeleniumUtils.switchToOriginal();
 
@@ -40,7 +41,7 @@ public class SocialMediaLinks extends TestBase {
         SeleniumUtils.switchToWindow();
 
         logger.info("Verify that Spotify’s official Facebook page is displayed");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify | Facebook");
         SeleniumUtils.switchToOriginal();
 
@@ -49,7 +50,7 @@ public class SocialMediaLinks extends TestBase {
         SeleniumUtils.switchToWindow();
 
         logger.info("Verify that Spotify’s official Twitter page is displayed");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         Assert.assertEquals(Driver.getDriver().getTitle(), "Spotify (@Spotify) / X");
         SeleniumUtils.switchToOriginal();
 
