@@ -12,7 +12,7 @@ public class AccountPage {
     public AccountPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
+//testing
     @FindBy(xpath ="//span[text()='Account']")
     private WebElement account;
 
